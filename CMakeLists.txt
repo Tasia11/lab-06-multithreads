@@ -1,9 +1,11 @@
-cmake_minimum_required(VERSION 3.4)
+cmake_minimum_required(VERSION 3.12)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-option(BUILD_COVERAGE "Build coverage" OFF)
+option(BUILD_TESTS "Build tests" ON)
+option(BUILD_DOCS "Build documentation" OFF)
+option(BUILD_COVERAGE "Build code coverage" OFF)
 
 set(
   HUNTER_CACHE_SERVERS
@@ -11,13 +13,13 @@ set(
   CACHE STRING "Default cache server"
 )
 
-include("tools/gate/cmake/HunterGate.cmake")
+include("cmake/HunterGate.cmake")
 
 HunterGate(
-        URL "https://github.com/cpp-pm/hunter/archive/v0.23.271.tar.gz"
-        SHA1 "2d6686024529b471e0cc3a4fc07d4d64b62a53ee"
+  URL "https://github.com/cpp-pm/hunter/archive/v0.23.278.tar.gz"
+  SHA1 "35fa55bc1dfcf9f4d7264f8bb26cd1759ce1ae07"
+  LOCAL
 )
-
 
 # TODO: rename project and delete this comment
 project(template)
