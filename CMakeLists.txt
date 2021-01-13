@@ -18,20 +18,19 @@ include("cmake/HunterGate.cmake")
 HunterGate(
   URL "https://github.com/cpp-pm/hunter/archive/v0.23.278.tar.gz"
   SHA1 "35fa55bc1dfcf9f4d7264f8bb26cd1759ce1ae07"
-  LOCAL
 )
 
 # TODO: rename project and delete this comment
-project(template)
-string(APPEND CMAKE_CXX_FLAGS " -pedantic -Werror -Wall -Wextra -pthread -std=c++11")
+project(template VERSION 0.1.0)
+string(APPEND CMAKE_CXX_FLAGS " -pedantic -Werror -Wall -Wextra")
 string(APPEND CMAKE_CXX_FLAGS " -Wno-unused-command-line-argument")
 string(APPEND CMAKE_CXX_FLAGS " -Wshadow -Wnon-virtual-dtor")
 
-hunter_add_package(nlohmann_json)
-find_package(nlohmann_json CONFIG REQUIRED)
-
 hunter_add_package(GTest)
 find_package(GTest CONFIG REQUIRED)
+
+hunter_add_package(nlohmann_json)
+find_package(nlohmann_json CONFIG REQUIRED)
 
 hunter_add_package(Boost COMPONENTS filesystem log system thread)
 find_package(Boost CONFIG REQUIRED filesystem log log_setup system thread)
