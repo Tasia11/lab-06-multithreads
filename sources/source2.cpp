@@ -1,7 +1,4 @@
 // Copyright 2020 Osipova Anastasiya anastasiyaosipova2001@gmail.com
-
-#include "hashCalc.hpp"
-
 #include <picosha2.h>
 
 #include <Declarations.hpp>
