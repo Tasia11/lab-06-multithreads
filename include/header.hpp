@@ -49,4 +49,4 @@ class hashCalc {
   json j;
 };
 
-#endif  // INCLUDE_HASHCALC_HPP_
+#endif  // INCLUDE_HEADER_HPP_
