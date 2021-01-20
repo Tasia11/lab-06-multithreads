@@ -24,29 +24,3 @@ class JSON {
 };
 
 #endif // INCLUDE_HEADER_HPP_
-
-using nlohmann::json;
-
-class hashCalc {
- public:
-  // hashCalc();
-  hashCalc(const size_t& M,
-           const std::string& str = "");
-  explicit hashCalc(const std::string& str);
-  ~hashCalc();
-  void countHash();
-  void openFilePath();
-  void initThreads();
-  void initLogs();
-  bool directionIsOpen();
-  void jsonOut(const int& data, const std::string& hash, const time_t& time);
-
- private:
-  size_t sizeOfThread = boost::thread::hardware_concurrency();
-  std::string nameOfReport;
-  std::ofstream file_log;
-  std::vector<boost::thread> listOfthread;
-  json j;
-};
-
-#endif  // INCLUDE_HEADER_HPP_
