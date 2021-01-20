@@ -1,33 +1,29 @@
 // Copyright 2020 Osipova Anastasiya anastasiyaosipova2001@gmail.com
 
-#include <vector>
-#include <atomic>
-#include <boost/log/core.hpp>
-#include <boost/log/expressions.hpp>
-#include <boost/log/sources/severity_logger.hpp>
-#include <boost/log/support/date_time.hpp>
-#include <boost/log/trivial.hpp>
-#include <boost/log/utility/setup/common_attributes.hpp>
-#include <boost/log/utility/setup/console.hpp>
-#include <boost/log/utility/setup/file.hpp>
-#include <boost/thread.hpp>
-#include <boost/thread/mutex.hpp>
-#include <boost/thread/thread.hpp>
-#include <csignal>
+#ifndef INCLUDE_HEADER_HPP_
+#define INCLUDE_HEADER_HPP_
 #include <ctime>
 #include <fstream>
 #include <iomanip>
-#include <iostream>
+#include <mutex>
 #include <nlohmann/json.hpp>
-#include <regex>
+#include <sstream>
 #include <string>
-#include <thread>
-#include <utility>
 
-#include "../third-party/PicoSHA2/picosha2.h"
+using json = nlohmann::json;
 
-#ifndef INCLUDE_HASHCALC_HPP_
-#define INCLUDE_HASHCALC_HPP_
+class JSON {
+ public:
+  void addHash(const std::string& data, const std::string& hash,
+               std::time_t timestamp);
+  friend std::ostream& operator<<(std::ostream& out, const JSON& j);
+
+ private:
+  mutable std::mutex mut;
+  json j_array;
+};
+
+#endif // INCLUDE_HEADER_HPP_
 
 using nlohmann::json;
 
